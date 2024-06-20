@@ -23,16 +23,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neostudio-io/webPenSDK.git"
+    "url": "git+https://github.com/NeoSmartpen/WEB-SDK2.0.git"
   },
   "keywords": [],
   "author": "Wonho Seo <swh1182@neolab.net>",
   "license": "GPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/neostudio-io/webPenSDK/issues",
+    "url": "https://github.com/NeoSmartpen/WEB-SDK2.0/issues",
     "email": "swh1182@neolab.net"
   },
-  "homepage": "https://github.com/neostudio-io/webPenSDK#readme",
+  "homepage": "https://github.com/NeoSmartpen/WEB-SDK2.0#readme",
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
