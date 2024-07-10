@@ -429,7 +429,7 @@ const path = new Path(screenDot.x, screenDot.y);
 <br />
 
 ## 🐾 Sample Page
-> https://github.com/neostudio-team/WebSDKSample
+> https://github.com/NeoSmartpen/WEB-SDK-Sample
 
 ## 📑 web_pen_sdk 공식문서
 > ### [Google Docs](https://docs.google.com/document/d/12ZSPQ-CVEOq4yxvNn2jcI9L_SZ01zJkMvbWBVfJCHWQ/edit?usp=sharing)
@@ -526,3 +526,13 @@ Release Note
 -----
 ### New Features
 - **PUI Feature** - setNprojInPuiController, extractMarginInfo 매개변수로 url 추가
+
+**2024. 01. 08.** (WONHO, ver.0.7.3)
+-----
+### New Features
+- **Bug Fix** - extractMarginInfo 에서 pageItem 찾는 로직에 startPage 값 미적용 수정
+
+**2024. 07. 10.** (WONHO, ver.0.7.6)
+-----
+### New Features
+- **PUI Feature** - PenHelper 내부에 isPUI 함수 추가
