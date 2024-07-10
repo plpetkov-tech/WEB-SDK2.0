@@ -329,6 +329,27 @@ class PenHelper {
   };
 
   /**
+   * 해당 pageInfo 가 PUI 인지 확인하기 위한 로직
+   * 
+   * @param {PageInfo} pageInfo
+   * @returns {boolean}
+   */
+  isPUI = (pageInfo: PageInfo) => {
+    const { owner, book, page } = pageInfo;
+    if (owner === 27 && book === 161 && page === 1) {
+      return true;
+    }
+  
+    if (owner === 1013 && (book === 1 || book === 1116)) {
+      // page === 4, Smart plate
+      // page === 1, Plate paper
+      return true;
+    }
+  
+    return false;
+  };
+
+  /**
    * props로 받은 pageInfo들을 바탕으로 같은 page인지 확인하기 위한 로직
    *
    * @param {PageInfo} page1
