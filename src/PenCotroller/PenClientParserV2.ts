@@ -36,7 +36,7 @@ export default class PenClientParserV2 {
   penSettingInfo: SettingInfo;
   current: Paper;
   state: IPenState;
-  mBuffer: any;
+  mBuffer: ByteUtil;
   IsEscape: boolean;
   offline: any;
   IsUploading: boolean;
@@ -846,7 +846,8 @@ export default class PenClientParserV2 {
     const [section, owner] = GetSectionOwner(rb);
     const note = packet.GetInt();
     const strokeCount = packet.GetShort();
-    const data = packet.GetBytes(null);
+    const oDataSize = isCompressed ? aftersize : beforsize;
+    const data = packet.GetBytes(oDataSize);
     const Paper = {
       packetid,
       isCompressed,
@@ -1040,13 +1041,13 @@ export default class PenClientParserV2 {
         this.ParsePacket(packet);
 
         this.IsEscape = false;
-      } else if (buff[i] === CONST.PK_DLE) {
-        if (i < size - 1) {
-          this.mBuffer.Put(buff[i + 1] ^ 0x20, false);
-          i++;
-        }
+      } else if (buff[i] === CONST.PK_DLE && !this.IsEscape) {
+        this.IsEscape = true;
+      } else if (this.IsEscape) {
+        this.mBuffer.Put(buff[i] ^ 0x20, false);
+        this.IsEscape = false;
       } else {
-        this.mBuffer.Put(buff[i]);
+        this.mBuffer.Put(buff[i], false);
       }
     }
   }

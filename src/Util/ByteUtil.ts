@@ -33,7 +33,7 @@ export default class ByteUtil {
    * @param {boolean} escapeIfExist - false = 버퍼의 시작과 끝에 추가하여 escape처리를 안할 때
    * @returns
    */
-  Put(input: number, escapeIfExist = true) {
+  Put(input: number, escapeIfExist: boolean = true) {
     if (escapeIfExist) {
       let escDatas = this.Escape(input);
 
@@ -114,7 +114,7 @@ export default class ByteUtil {
    * @param {number} size
    * @returns
    */
-  GetBytes(size: number) {
+  GetBytes(size?: number) {
     let length = 0;
     if (size) {
       length = size;

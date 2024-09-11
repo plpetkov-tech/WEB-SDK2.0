@@ -536,3 +536,9 @@ Release Note
 -----
 ### New Features
 - **PUI Feature** - PenHelper 내부에 isPUI 함수 추가
+
+**2024. 09. 11.** (WONHO, ver.0.7.8)
+-----
+### Updates
+- **Bug Fix** - 청크 데이터의 DLE escape 처리가 완벽하게 되지 않았던 이슈 수정
+- **Defendency** - css webpack plugin 교체
