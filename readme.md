@@ -542,3 +542,8 @@ Release Note
 ### Updates
 - **Bug Fix** - 청크 데이터의 DLE escape 처리가 완벽하게 되지 않았던 이슈 수정
 - **Defendency** - css webpack plugin 교체
+
+**2024. 10. 30.** (WONHO, ver.0.7.9)
+-----
+### Updates
+- **VersionInfo** - 프로토콜 버전 2.22 이상일 경우 디바이스의 압축 지원 여부 알림
