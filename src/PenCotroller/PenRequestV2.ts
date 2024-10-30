@@ -512,6 +512,7 @@ export default class PenRequestV2 {
     const bf = new ByteUtil();
 
     const deviceName = this.penController.info.DeviceName;
+    const deviceProtocolVersion = this.penController.info.ProtocolVersion;
 
     const fwdeviceName = Converter.toUTF8Array(deviceName);
     const fwVersion = Converter.toUTF8Array(version);
@@ -536,18 +537,32 @@ export default class PenRequestV2 {
     }
 
     let isCompress = 0;
-    if (isCompressed) {
-      if (
-        deviceName === "NEP-E100" ||
-        deviceName === "NEP-E101" ||
-        deviceName === "NSP-D100" ||
-        deviceName === "NSP-D101" ||
-        deviceName === "NSP-C200" ||
-        deviceName === "NPP-P201"
-      ) {
-        isCompress = 0;
-      } else {
-        isCompress = 1;
+    if (parseFloat(deviceProtocolVersion) < 2.22) {
+      if (isCompressed) {
+        if (
+          deviceName === 'NWP-F151' ||
+          deviceName === 'NWP-F63' ||
+          deviceName === 'NWP-F53MG' ||
+          deviceName === 'NWP-F45' ||
+          deviceName === 'NEP-E100' ||
+          deviceName === 'NEP-E101' ||
+          deviceName === 'NSP-D100' ||
+          deviceName === 'NSP-D101' ||
+          deviceName === 'NSP-C200' ||
+          deviceName === 'NPP-P201'
+        ) {
+          isCompress = 0;
+        } else {
+          isCompress = 1;
+        }
+      }
+    } else {
+      if (isCompressed) {
+        if (!this.penController.info.IsSupportCompress) {
+          isCompress = 0;
+        } else {
+          isCompress = 1;
+        }
       }
     }
     this.state.isFwCompress = !!isCompress;

@@ -15,6 +15,14 @@ export function VersionInfo(packet: Packet) {
   const DeviceType = packet.GetShort();
   const MacAddress = toHexString(packet.GetBytes(6));
   const PressureSensorType = packet.GetByte();
+  const CompanyCode = packet.GetShort();
+  const ProductCode = packet.GetByte();
+  const ColorCode = packet.GetByte();
+
+  let IsSupportCompress = false;
+  if (parseFloat(ProtocolVersion) >= parseFloat("2.22")) {
+    IsSupportCompress = packet.GetByte() === 1 ? true : false;
+  }
 
   const versionInfo = {
     DeviceName,
@@ -24,6 +32,10 @@ export function VersionInfo(packet: Packet) {
     DeviceType,
     MacAddress,
     PressureSensorType,
+    CompanyCode,
+    ProductCode,
+    ColorCode,
+    IsSupportCompress,
   };
   return versionInfo;
 }

@@ -67,6 +67,10 @@ type VersionInfo = {
   DeviceType: number;
   MacAddress: string;
   PressureSensorType: number;
+  CompanyCode: number;
+  ProductCode: number;
+  ColorCode: number;
+  IsSupportCompress: boolean;
 };
 
 type SettingInfo = {
