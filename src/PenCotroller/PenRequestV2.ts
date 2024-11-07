@@ -537,34 +537,35 @@ export default class PenRequestV2 {
     }
 
     let isCompress = 0;
-    if (parseFloat(deviceProtocolVersion) < 2.22) {
-      if (isCompressed) {
-        if (
-          deviceName === 'NWP-F151' ||
-          deviceName === 'NWP-F63' ||
-          deviceName === 'NWP-F53MG' ||
-          deviceName === 'NWP-F45' ||
-          deviceName === 'NEP-E100' ||
-          deviceName === 'NEP-E101' ||
-          deviceName === 'NSP-D100' ||
-          deviceName === 'NSP-D101' ||
-          deviceName === 'NSP-C200' ||
-          deviceName === 'NPP-P201'
-        ) {
-          isCompress = 0;
-        } else {
-          isCompress = 1;
-        }
-      }
-    } else {
-      if (isCompressed) {
-        if (!this.penController.info.IsSupportCompress) {
-          isCompress = 0;
-        } else {
-          isCompress = 1;
-        }
-      }
-    }
+    // 24/11/07 FW팀 요청으로 모든 펜은 압축 없이 펌웨어 업데이트하도록 변경
+    // if (parseFloat(deviceProtocolVersion) < 2.22) {
+    //   if (isCompressed) {
+    //     if (
+    //       deviceName === 'NWP-F151' ||
+    //       deviceName === 'NWP-F63' ||
+    //       deviceName === 'NWP-F53MG' ||
+    //       deviceName === 'NWP-F45' ||
+    //       deviceName === 'NEP-E100' ||
+    //       deviceName === 'NEP-E101' ||
+    //       deviceName === 'NSP-D100' ||
+    //       deviceName === 'NSP-D101' ||
+    //       deviceName === 'NSP-C200' ||
+    //       deviceName === 'NPP-P201'
+    //     ) {
+    //       isCompress = 0;
+    //     } else {
+    //       isCompress = 1;
+    //     }
+    //   }
+    // } else {
+    //   if (isCompressed) {
+    //     if (!this.penController.info.IsSupportCompress) {
+    //       isCompress = 0;
+    //     } else {
+    //       isCompress = 1;
+    //     }
+    //   }
+    // }
     this.state.isFwCompress = !!isCompress;
     this.state.fwPacketSize = packetSize;
     this.state.fwFile = fwBf;
